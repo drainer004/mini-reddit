@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;600&family=Press+Start+2P&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-rpg-darker text-white font-ui antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  ::selection {
+    @apply bg-gold text-yellow-950;
+  }
+}
+
+@layer components {
+  .rpg-panel {
+    @apply bg-rpg-panel border-4 border-rpg-border rounded-rpg p-6;
+    @apply shadow-rpg relative;
+  }
+  
+  .rpg-button {
+    @apply inline-flex items-center justify-center;
+    @apply font-pixel text-sm uppercase tracking-wider;
+    @apply bg-rpg-panel text-white border-4 border-rpg-border;
+    @apply px-6 py-3 shadow-rpg;
+    @apply transition-all duration-100;
+    @apply hover:bg-rpg-light;
+    @apply active:shadow-rpg-sm active:translate-x-[2px] active:translate-y-[2px];
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:translate-x-0 disabled:active:translate-y-0;
+  }
+  
+  .rpg-input {
+    @apply bg-rpg-dark border-4 border-rpg-border rounded-rpg;
+    @apply px-4 py-3 text-white font-rpg;
+    @apply focus:outline-none focus:border-gold;
+    @apply placeholder:text-slate-500;
+  }
+  
+  .stat-bar {
+    @apply h-4 bg-rpg-darker rounded-full overflow-hidden border-2 border-rpg-border;
+  }
+  
+  .stat-bar-fill {
+    @apply h-full transition-all duration-500 ease-out relative;
+  }
+  
+  .rarity-common { @apply border-common text-common bg-gray-900/50; }
+  .rarity-uncommon { @apply border-uncommon text-uncommon bg-green-900/20; }
+  .rarity-rare { @apply border-rare text-rare bg-blue-900/20; }
+  .rarity-epic { @apply border-epic text-epic bg-purple-900/20; }
+  .rarity-legendary { @apply border-legendary text-legendary bg-yellow-900/20 shadow-glow-gold; }
+  .rarity-mythic { @apply border-mythic text-mythic bg-red-900/20; }
+}
+
+@layer utilities {
+  .text-shadow-rpg {
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  }
+  
+  .pixel-perfect {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  .crt::before {
+    content: " ";
+    @apply block absolute inset-0 pointer-events-none z-50;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+  }
+  
+  .glow-gold { filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.5)); }
+  .glow-red { filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5)); }
+  .glow-blue { filter: drop-shadow(0 0 10px rgba(37, 99, 235, 0.5)); }
+  .glow-purple { filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5)); }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-rpg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rpg-border border-4 border-rpg-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-rpg-light;
+}
+
+* {
+  scrollbar-width: thick;
+  scrollbar-color: #334155 #0f172a;
+}
